@@ -6,7 +6,7 @@ Cross platform mobile app built with Expo, Expo Router, and TypeScript.
 
 ## Project
 
-Stack: Expo SDK 52, React Native, TypeScript (strict), Expo Router, NativeWind (Tailwind for React Native), React Native Reusables (shadcn style UI components), TanStack Query for server state, Axios for HTTP, TanStack Form for forms, Zod for validation, Zustand for local state, EAS Build and EAS Update. Husky, lint-staged, and commitlint for git hooks.
+Stack: Expo SDK 57, React Native, TypeScript (strict), Expo Router, NativeWind (Tailwind for React Native), React Native Reusables (shadcn style UI components), TanStack Query for server state, Axios for HTTP, TanStack Form for forms, Zod for validation, Zustand for local state, EAS Build and EAS Update. Biome handles linting and formatting. Husky, lint-staged, and commitlint for git hooks.
 
 Package manager: pnpm. Never mix lockfiles.
 
@@ -98,10 +98,10 @@ pnpm start                       # metro bundler
 pnpm start --clear               # after changing tailwind.config.js, global.css, babel or metro config
 pnpm ios                         # run on iOS simulator
 pnpm android                     # run on Android emulator
-pnpm lint
+pnpm lint                        # Biome lint and format checks
 pnpm typecheck                   # tsc --noEmit
 pnpm test                        # jest with jest-expo
-pnpm format                      # prettier
+pnpm format                      # Biome formatter
 pnpm exec commitlint --from HEAD~1   # check the last commit message
 npx expo install <package>       # install at the SDK compatible version
 npx expo prebuild --clean        # regenerate native projects, ask first
@@ -112,7 +112,7 @@ eas build --profile production --platform all
 eas update --branch preview      # OTA update, JS only
 ```
 
-Use `npx expo install` for any package with a native component, not `pnpm add`. `@tanstack/react-query`, `@tanstack/react-form`, `axios`, and `zod` are JavaScript only, so `pnpm add` is fine for them. The same goes for the styling helpers (`clsx`, `tailwind-merge`, `class-variance-authority`, `tailwindcss`) and the git tooling (`husky`, `lint-staged`, `@commitlint/cli`, `@commitlint/config-conventional`). `nativewind`, `react-native-reanimated`, `react-native-svg`, and `react-native-gesture-handler` have native parts, so install them with `npx expo install`. Use the versions the Reusables docs specify for our Expo SDK. Do not bump the NativeWind or Tailwind major version on your own.
+Use `npx expo install` for any package with a native component, not `pnpm add`. `@tanstack/react-query`, `@tanstack/react-form`, `axios`, and `zod` are JavaScript only, so `pnpm add` is fine for them. The same goes for the styling helpers (`clsx`, `tailwind-merge`, `class-variance-authority`, `tailwindcss`) and the git tooling (`husky`, `lint-staged`, `@commitlint/cli`, `@commitlint/config-conventional`, `@biomejs/biome`). `nativewind`, `react-native-reanimated`, `react-native-svg`, and `react-native-gesture-handler` have native parts, so install them with `npx expo install`. Use the versions the Reusables docs specify for our Expo SDK. Do not bump the NativeWind or Tailwind major version on your own.
 
 Before saying a task is done, run `pnpm lint && pnpm typecheck && pnpm test` and fix everything reported.
 
@@ -149,8 +149,7 @@ module.exports = { extends: ['@commitlint/config-conventional'] };
 
 ```json
 "lint-staged": {
-  "*.{ts,tsx,js,jsx}": ["eslint --fix", "prettier --write"],
-  "*.{json,md,css}": ["prettier --write"]
+  "*.{ts,tsx,js,jsx,json,css}": "biome check --write"
 }
 ```
 
@@ -359,7 +358,7 @@ Follow "Rules and skills to follow while working" above for every task. In addit
 - Check `src/components/ui/` before creating a new component, and use the Reusables CLI for missing primitives.
 
 **Verify, do not assume**
-- Do not invent package names, APIs, props, or Expo SDK 52 features. When unsure, check the official docs or the installed package in `node_modules`.
+- Do not invent package names, APIs, props, or Expo SDK 57 features. When unsure, check the official docs or the installed package in `node_modules`.
 - Install native packages with `npx expo install`, not `pnpm add`.
 
 **Ask first**

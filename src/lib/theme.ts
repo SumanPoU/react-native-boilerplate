@@ -1,0 +1,87 @@
+import {
+  DarkTheme,
+  DefaultTheme,
+  type Theme,
+} from "expo-router/react-navigation";
+
+import { colors } from "../theme/colors";
+
+export const THEME = {
+  light: {
+    background: colors.light.background,
+    foreground: colors.light.foreground,
+    card: colors.light.card,
+    cardForeground: colors.light.cardForeground,
+    popover: colors.light.popover,
+    popoverForeground: colors.light.popoverForeground,
+    primary: colors.light.primary,
+    primaryForeground: colors.light.primaryForeground,
+    secondary: colors.light.secondary,
+    secondaryForeground: colors.light.secondaryForeground,
+    muted: colors.light.muted,
+    mutedForeground: colors.light.mutedForeground,
+    accent: colors.light.accent,
+    accentForeground: colors.light.accentForeground,
+    destructive: colors.light.destructive,
+    border: colors.light.border,
+    input: colors.light.input,
+    ring: colors.light.ring,
+    radius: colors.light.radius,
+    chart1: colors.light.chart1,
+    chart2: colors.light.chart2,
+    chart3: colors.light.chart3,
+    chart4: colors.light.chart4,
+    chart5: colors.light.chart5,
+  },
+  dark: {
+    background: colors.dark.background,
+    foreground: colors.dark.foreground,
+    card: colors.dark.card,
+    cardForeground: colors.dark.cardForeground,
+    popover: colors.dark.popover,
+    popoverForeground: colors.dark.popoverForeground,
+    primary: colors.dark.primary,
+    primaryForeground: colors.dark.primaryForeground,
+    secondary: colors.dark.secondary,
+    secondaryForeground: colors.dark.secondaryForeground,
+    muted: colors.dark.muted,
+    mutedForeground: colors.dark.mutedForeground,
+    accent: colors.dark.accent,
+    accentForeground: colors.dark.accentForeground,
+    destructive: colors.dark.destructive,
+    border: colors.dark.border,
+    input: colors.dark.input,
+    ring: colors.dark.ring,
+    radius: colors.dark.radius,
+    chart1: colors.dark.chart1,
+    chart2: colors.dark.chart2,
+    chart3: colors.dark.chart3,
+    chart4: colors.dark.chart4,
+    chart5: colors.dark.chart5,
+  },
+};
+
+export const NAV_THEME: Record<"light" | "dark", Theme> = {
+  light: {
+    ...DefaultTheme,
+    colors: {
+      background: THEME.light.background,
+      border: THEME.light.border,
+      card: THEME.light.card,
+      notification: THEME.light.destructive,
+      primary: THEME.light.primary,
+      text: THEME.light.foreground,
+    },
+  },
+  dark: {
+    ...DarkTheme,
+    colors: {
+      background: THEME.dark.background,
+      border: THEME.dark.border,
+      card: THEME.dark.card,
+      notification: THEME.dark.destructive,
+      primary: THEME.dark.primary,
+      text: THEME.dark.foreground,
+    },
+  },
+};

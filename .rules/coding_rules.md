@@ -20,7 +20,7 @@ Stack reminder (details in `AGENTS.md`): Expo, Expo Router, TypeScript strict, N
 - Use modern JS: destructuring, template literals, optional chaining.
 - Avoid global variables and module-level mutable state.
 - Use concise conditionals: no unnecessary braces for simple single statements.
-- Format with Prettier; lint with ESLint. Never hand-format.
+- Format and lint with Biome. Never hand-format.
 - Do not add a dependency for something achievable in a few lines.
 
 ## 2. Naming
