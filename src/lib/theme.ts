@@ -51,7 +51,7 @@ export function useAppTheme(): {
       border: `hsl(${palette.border})`,
       card: `hsl(${palette.card})`,
       notification: `hsl(${palette.destructive})`,
-      primary: `hsl(${palette.primary})`,
+      primary: palette.primary,
       text: `hsl(${palette.foreground})`,
     },
   };
