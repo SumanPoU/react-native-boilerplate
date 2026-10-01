@@ -12,9 +12,9 @@ Package manager: pnpm. Never mix lockfiles.
 
 Layout:
 
-- `app/` Expo Router routes, the directory tree is the navigation tree
-- `app/(tabs)/` bottom tab navigator, `app/(auth)/` unauthenticated stack
-- `app/_layout.tsx` root providers, `app/+not-found.tsx` fallback
+- `src/app/` Expo Router routes, the directory tree is the navigation tree
+- `src/app/(tabs)/` bottom tab navigator, `src/app/(auth)/` unauthenticated stack
+- `src/app/_layout.tsx` root providers, `src/app/+not-found.tsx` fallback
 - `src/components/ui/` React Native Reusables components, copied into the repo and owned by us (Button, Input, Card, Dialog, and so on)
 - `src/components/` shared presentational components built from `ui/`, no data fetching
 - `src/features/<feature>/` screens, hooks, form components, and feature specific schemas for one feature
@@ -38,7 +38,7 @@ Layout:
 - `.agents/skills/` task specific skills: `react-native-architecture`, `react-native-design`, `react-native-expert`, `ui-ux-pro-max`
 - `CLAUDE.md` pointer to this file, keep it a one line reference so the rules never drift
 
-Entry points: `app/_layout.tsx` (imports `global.css`), `app.config.ts`, `eas.json`.
+Entry points: `src/app/_layout.tsx` (imports `global.css`), `app.config.ts`, `eas.json`.
 
 ## Rules and skills to follow while working
 
