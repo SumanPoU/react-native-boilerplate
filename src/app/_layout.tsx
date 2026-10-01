@@ -2,13 +2,25 @@ import "../../global.css";
 
 import { PortalHost } from "@rn-primitives/portal";
 import { Stack, ThemeProvider } from "expo-router";
+import { useColorScheme } from "nativewind";
+import { useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { useAppTheme } from "@/lib/theme";
+import { getAppTheme } from "@/lib/theme";
+import { useSettingsStore } from "@/store/useSettingsStore";
 
 export default function RootLayout() {
-  const { navigationTheme, nativeVariables } = useAppTheme();
+  const { colorScheme, setColorScheme } = useColorScheme();
+  const themePreference = useSettingsStore((state) => state.themePreference);
+  const mode = themePreference === "system" ? colorScheme : themePreference;
+  const { navigationTheme, nativeVariables } = getAppTheme(
+    mode === "dark" ? "dark" : "light",
+  );
+
+  useEffect(() => {
+    setColorScheme(themePreference);
+  }, [setColorScheme, themePreference]);
 
   return (
     <GestureHandlerRootView style={styles.container}>

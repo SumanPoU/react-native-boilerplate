@@ -3,15 +3,13 @@ import {
   DefaultTheme,
   type Theme,
 } from "expo-router/react-navigation";
-import { useColorScheme, vars } from "nativewind";
+import { vars } from "nativewind";
 import { themeColors, themeRadius } from "@/theme/colors";
 
-export function useAppTheme(): {
+export function getAppTheme(mode: "light" | "dark"): {
   navigationTheme: Theme;
   nativeVariables: ReturnType<typeof vars>;
 } {
-  const { colorScheme } = useColorScheme();
-  const mode = colorScheme === "dark" ? "dark" : "light";
   const palette = themeColors[mode];
   const baseTheme = mode === "dark" ? DarkTheme : DefaultTheme;
 
