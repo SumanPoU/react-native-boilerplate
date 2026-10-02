@@ -2,6 +2,7 @@ import "../../global.css";
 
 import { PortalHost } from "@rn-primitives/portal";
 import { Stack, ThemeProvider } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
 import { useColorScheme } from "nativewind";
 import { useEffect } from "react";
 import { StyleSheet, View } from "react-native";
@@ -9,6 +10,9 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { getAppTheme } from "@/lib/theme";
 import { useSettingsStore } from "@/store/useSettingsStore";
+
+SplashScreen.preventAutoHideAsync();
+SplashScreen.setOptions({ duration: 400, fade: true });
 
 export default function RootLayout() {
   const { colorScheme, setColorScheme } = useColorScheme();
@@ -25,7 +29,11 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={styles.container}>
       <SafeAreaProvider>
-        <View className="flex-1 bg-background" style={nativeVariables}>
+        <View
+          className="flex-1 bg-background"
+          style={nativeVariables}
+          onLayout={() => SplashScreen.hide()}
+        >
           <ThemeProvider value={navigationTheme}>
             <Stack screenOptions={{ headerShown: false }} />
             <PortalHost />
