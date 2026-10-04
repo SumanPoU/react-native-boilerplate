@@ -33,7 +33,7 @@ export const themeColors = {
     popover: "222.2 84% 4.9%",
     popoverForeground: "210 40% 98%",
     primary: "hsl(213, 42%, 35%)",
-    primaryForeground: "222.2 47.4% 11.2%",
+    primaryForeground: "0 0% 100%",
     secondary: "hsl(26, 79%, 62%)",
     secondaryForeground: "222.2 84% 4.9%",
     muted: "217.2 32.6% 17.5%",
